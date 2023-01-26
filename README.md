@@ -55,6 +55,11 @@
     2. updte App.js
 
 11. Create Product and Rating Component
+
     1. Create Rating Component
     2. Create Product Component
     3. Use Rating Component in Product Component
+
+12. Create Product Details Screen
+    1. fetch product from backend
+    2. create 3 columns for image, info and action
