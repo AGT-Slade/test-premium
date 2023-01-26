@@ -15,10 +15,29 @@ main {
   flex: 1;
 }
 
+.btn-primary {
+  background-color: #f0c040;
+  color: #000000;
+}
+
 .products {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.rating {
+  display: flex;
+}
+
+.rating span {
+  color: #ffc000;
+  margin: 5px 0;
+}
+
+.star:hover {
+  margin-top: 0px;
+  margin-bottom: 10px;
 }
 
 .product {
