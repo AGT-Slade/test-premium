@@ -9,6 +9,9 @@ import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
 import Rating from "../components/Rating";
 import { Helmet } from "react-helmet-async";
+import LoadingBox from "../components/LoadingBox";
+import MessageBox from "../components/MessageBox";
+import { getError } from "../ultils";
 
 const reducer = function (state, action) {
   switch (action.type) {
@@ -39,8 +42,8 @@ function ProductScreen() {
         try {
           const result = await axios.get(`/api/products/slug/${slug}`); //use backtick literal
           dispatch({ type: "FETCH_SUCCESS", payload: result.data });
-        } catch (error) {
-          dispatch({ type: "FETCH_SUCCESS", payload: error.message });
+        } catch (err) {
+          dispatch({ type: "FETCH_FAIL", payload: getError(err) });
         }
 
         //setProducts(result.data);
@@ -51,9 +54,9 @@ function ProductScreen() {
   ); //slug will be use a dependency to update useEffect
 
   return loading ? (
-    <div>loading...</div>
+    <LoadingBox />
   ) : error ? (
-    <div>{error}</div>
+    <MessageBox variant="danger">{error}</MessageBox>
   ) : (
     <div>
       <Row>
